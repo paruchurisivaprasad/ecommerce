@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@450&display=swap");
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+
+.barclass{
+
+    position: fixed;
+    top: 0;
+
+    background-color:rgb(36, 36, 41);
+
+    width: 100%;
+    position: absolute;
+    height: 10vh;
+
+}
+#navbrand {
+
+    color:white;
+    letter-spacing: 1px;
+
+  font-size: 27px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#navlink1,#navlink2,#navlink3{
+font-size: 22px;
+    color: rgb(239, 207, 207);
+    font-weight: 520;
+    
+}
+#navlink1:hover,#navlink2:hover,#navlink3:hover{
+    font-size: 22px;
+    border: 1px solid white;
+}
+
+#navi{
+    margin-left: 300px;
+}
+#cartcount{
+
+    margin-top: -36px;
+    margin-left: -24px;
+    font-size: 15px;
+
+    color: rgb(251, 167, 11);
+
+
+}
+.fas{
+    color: whitesmoke;
+
+}
+
+
+
+.welcomemsg{
+
+    width: 100%;
+    }
+.welcome{
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+}
+.welcometxt{
+    font-weight: 500;
+    color: orange;
+    
+}
+.managenav{
+    height: 11vh;
+    background-color: black;
+}
+.card-title{
+    font-weight: 530;
+    font-size: 40px;
+}
+.cartimage{
+    
+}
+
+
+#rowsdata{
+margin-top: 10vh;
+}
+.cartlists{
+padding-right: 19%;
+padding-left: 11%;
+}
+.cartprice{
+    width: 55%;
+}
+.addtocart{
+    float: right;
+    margin-top: -46px;
+}
+
+.cardcart{
+}
+.cartimage{
+    height: 55vh;
+}
