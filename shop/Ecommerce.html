@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecommerce Site</title>
+    <script
+      src="https://kit.fontawesome.com/134da7a391.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="./style.css" />
+
+  </head>
+  <body>
+    <nav class="navbar navbar-dark barclass navbar-expand-lg">
+      <a id="navbrand" href="#" class="navbar-brand ms-4">SivaStore</a>
+
+      <button
+        class="navbar-toggler"
+        data-bs-toggle="collapse"
+        data-bs-target="#navi"
+      >
+        <span id="togglerupdown" class="navbar-toggler-icon"> </span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navi">
+        <ul class="navbar-nav">
+          <li class="nav-item px-4">
+            <a id="navlink1" href="home.html" class="nav-link">HOME</a>
+          </li>
+
+          <li class="nav-item px-4">
+            <a
+              id="navlink2"
+              href="Ecommerce.html"
+              class="nav-link bg-gradient text-info"
+              >STORE</a
+            >
+          </li>
+          <li class="nav-item px-4">
+            <a id="navlink3" href="about.html" class="nav-link">ABOUT</a>
+          </li>
+        </ul>
+        <div class="d-flex ms-auto mt-2">
+          <div >
+            <i class="fas fa-shopping-cart fa-2x"></i>
+          </div>
+        </div>
+        <div class="me-4 mt-2">
+          <div id="cartcount" class="me-5">0</div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- -->
+    <div class="cartshow">
+        <button class="closingTheCart" style="float: right; margin: 10px;  background-color:lightgrey; width: 35px; color: red;">X</button>
+      <div class="cartshow1">
+        <h3 class="text-center mt-4">CART</h3>
+         <div class="cartHeading">
+            <span  style="font-size: 20px; margin-right: 100px; margin-left: 10px;">  NAME</span>
+            <span style="font-size: 20px; margin-right: 50px;">  PRICE </span>
+            <span style="font-size: 20px;"> QUANTITY</span>
+         </div>
+        <div class="cartshow2 "></div>
+
+
+        <span style="margin-left: 20px; margin-right: 20px; float: right; font-weight: 900;"> TOTAL PRICE  : </span><br>
+        <div style="margin-inline: 40px; float: right;" class="totalcartcost">
+        </div>
+        <div class="mt-5 text-center">
+
+            <button class="purchaseItem" style="padding: 11px; background-color: #4ecef9; border: none; color: white; border-radius: 10px;">PURCHASE</button>
+            
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+
+    <!-- nav bar -->
+
+    <div class="managenav"></div>
+    <!-- welcome message -->
+
+    <div class="welcomemsg">
+      <div class="welcome bg-dark">
+        <h1 class="welcometxt h1">
+          WELCOME TO SIVASTORE . WE OFFER BEST LAPTOPS
+        </h1>
+      </div>
+    </div>
+
+    <div class="productscontainer mt-3">
+      <h5 class="text-center">PRODUCTS</h5>
+
+      <div class="mt-4 cartproducts">
+        <div class="row listofproducts">
+          
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+    <!-- show carts -->
+
+    <!--  -->
+    <!-- carts -->
+
+    <!-- 
+    <div class="container cartlists">
+      <div id="rowsdata" class="row">
+        <div class="col-lg-6 my-4 colpart" id="1">
+          <div class=" mx-4 shadow-lg cardcart">
+            <h6 class="text-center text-info py-3 itemname">HP S15</h6>
+
+            <img src="./images/hps15.jpeg" alt="" class="img-fluid cartimage" />
+            <div class="cardbody">
+              <h2 class=" cartprice">₹ 49999</h2>
+
+              <button class="text-white addtocart">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 my-4 colpart" id="2">
+          <div class=" mx-4 shadow-lg cardcart">
+            <h6 class="text-center text-info py-3 itemname">
+              DELL INSPIRON 3525
+            </h6>
+
+            <img
+              src="./images/dell3525.jpg"
+              alt=""
+              class="img-fluid cartimage"
+            />
+            <div class="cardbody">
+              <h2 class=" cartprice">₹ 43333</h2>
+
+              <button class="text-white addtocart">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 my-4 colpart" id="3">
+          <div class=" mx-4 shadow-lg cardcart">
+            <h6 class="text-center text-info py-3 itemname">ASER EXTENSA 15</h6>
+
+            <img
+              src="./images/aserextensa15.jpg"
+              alt=""
+              class="img-fluid cartimage"
+            />
+            <div class="cardbody">
+              <h2 class=" cartprice">₹ 33333</h2>
+
+              <button class="text-white addtocart">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 my-4 colpart" id="4">
+          <div class=" mx-4 shadow-lg cardcart">
+            <h6 class="text-center text-info py-3 itemname">
+              LENOVO IDEAPAD SLIM 3
+            </h6>
+
+            <img
+              src="./images/lenovoideapadslim3.jpg"
+              alt=""
+              class="img-fluid cartimage"
+            />
+            <div class="cardbody">
+              <h2 class=" cartprice">₹ 39222</h2>
+
+              <button class="text-white addtocart">ADD TO CART</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- HOME PAGE  -->
+
+    <!-- <div class="topfot mt-5">
+      <div class="fot p-5">
+        <h5 class="text-warning">Follow us on social media</h5>
+        <h6 class="text-light">
+          <span class="text-danger">@</span> Copyright 2021-2022 by SIVA PRASAD
+          . All Rights Reserved . SivaStore is Powered by SIVASTORES.
+        </h6>
+      </div>
+    </div> -->
+
+
+
+    <div id="alertpopup"></div>
+
+    <button class="checkthecart  mt-5" style="margin-left: 43%; ">SEE THE CART</button>
+    <div class="topfot mt-5">
+      <div class="fot p-5">
+        <h5 class="text-warning">Follow us on social media</h5>
+        <h6 class="text-light">
+          <span class="text-danger">@</span> Copyright 2021-2022 by SIVA PRASAD
+          . All Rights Reserved . SivaStore is Powered by SIVASTORES.
+        </h6>
+      </div>
+    </div>
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+
+            <script src="./ecom.js" ></script>
+
+
+  </body>
+</html>
