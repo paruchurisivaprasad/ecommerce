@@ -19,7 +19,7 @@ let cartshow=document.querySelector('.cartshow');
 let cartIMAGE=document.querySelector('.cartimag');
 let fashoppingcart = document.querySelector(".fa-shopping-cart");
 
-
+let addToCart=document.querySelector('.addtocart');
 
 function getAllProducts() {
 
@@ -41,7 +41,7 @@ function getAllProducts() {
   <h4 class="cartprice">${result.data[i].productprice}</h4>
 
   <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
-</div>;
+</div>
       `;
           }
 
@@ -51,9 +51,45 @@ function getAllProducts() {
       console.log(err);
     });
   
+};
+
+// function getallcartitems(e){
+
+
+
+//   axios.get()
+// }
+
+listofproducts.addEventListener('click',(e)=>{
+
+if(e.target.classList.contains('addtocart')){
+
+    let targetparent = e.target.parentElement;
+
+    let cartPrice=targetparent.querySelector('.cartprice').innerText;
+        let cartImage=targetparent.querySelector(".cartimag").src
+
+            let cartName=targetparent.querySelector(".cartname").innerText;
+
+          let obj1=  {
+           productname: cartName,
+                     productimage: cartImage,
+
+          productprice: cartPrice
+          }
+
+          axios
+            .post("http://localhost:1111/cart", obj1)
+            .then((result) => {
+              console.log(result);
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+
+
 }
-
-
+})
 
 
 document.addEventListener('DOMContentLoaded',getAllProducts);
@@ -124,7 +160,7 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 
 //                   let countcount=++parsetotal;
 
-                            // console.log( Number(e.target.parentElement.querySelector('.cartprice').innerText));
+//                             console.log( Number(e.target.parentElement.querySelector('.cartprice').innerText));
 
 //                   console.log(countcount);
 
@@ -167,9 +203,10 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 // showcartitems.innerHTML = singleItemtoCart;
 // console.log(singleItemtoCart);
 
+// });
 
 
-// })
+//   END OF POST PRODUCT
 
 // function AlertItem(e)
 // {
@@ -189,7 +226,7 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 
 // showcartitems.addEventListener('click',(e)=>{
 
-//         // console.log(e.target);
+        // console.log(e.target);
 
 
 //     if (e.target.classList.contains("removeTheItem")) {
@@ -277,3 +314,6 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 
 
 */
+
+
+
