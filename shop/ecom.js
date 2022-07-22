@@ -53,12 +53,46 @@ function getAllProducts() {
   
 };
 
-// function getallcartitems(e){
+function getallcartitems(){
+  axios.get("http://localhost:1111/allcart")
+  .then(items=>{
+    let totalcart = "";
+    let tprice = 0;
+    cartcount.innerHTML = items.data.length;
 
+    for (let i = 0; i < items.data.length; i++) {
+      tprice += items.data[i].productprice;
+      totalcart += `
 
+ <div class="singler mt-2" id=${items.data[i].id}>
 
-//   axios.get()
-// }
+ <span style="font-size: 15px; width:10vw;  margin-left: 5px; width:10vw; ">${
+        items.data[i].productname
+      }</span>
+
+ <span style="font-size: 20px; margin-left: 60px; ">${
+        items.data[i].productprice
+      }</span>
+
+ <input style="width:40px; margin-left:80px;" value=${1} disabled>
+
+ <button class="removeTheItem" style="float:right; border:none;   margin-right:10px; background:red; padding:8px; color:white; border-radius:11px; ">REMOVE ITEM</button>
+
+</div>
+
+<hr style="    border-bottom: 2px dotted #999;">`;
+    }
+      totalcartcost.innerHTML=tprice;
+
+    showcartitems.innerHTML = totalcart;
+  })
+  .catch(err=>{
+    console.log(err);
+  })
+}
+
+document.addEventListener('DOMContentLoaded',getallcartitems);
+
 
 listofproducts.addEventListener('click',(e)=>{
 
@@ -82,12 +116,12 @@ if(e.target.classList.contains('addtocart')){
             .post("http://localhost:1111/cart", obj1)
             .then((result) => {
               console.log(result);
+              getallcartitems();
+               AlertItem(e);
             })
             .catch((err) => {
               console.log(err);
             });
-
-
 }
 })
 
@@ -208,19 +242,19 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 
 //   END OF POST PRODUCT
 
-// function AlertItem(e)
-// {
-// let name = e.target.parentElement.querySelector(".cartname").innerText;
-//   const notification = document.createElement("div");
-//   notification.classList.add("notification");
-//   notification.innerHTML = `<h6>${name} is added to the cart</h6>`;
-//   container.appendChild(notification);
-//   setTimeout(() => {
-//     notification.remove();
-//   }, 2800);
+function AlertItem(e)
+{
+let name = e.target.parentElement.querySelector(".cartname").innerText;
+  const notification = document.createElement("div");
+  notification.classList.add("notification");
+  notification.innerHTML = `<h6>${name} is added to the cart</h6>`;
+  container.appendChild(notification);
+  setTimeout(() => {
+    notification.remove();
+  }, 2800);
 
 
-// }
+}
 
 
 
@@ -242,35 +276,35 @@ document.addEventListener('DOMContentLoaded',getAllProducts);
 // })
 
 
-// cartshow.addEventListener('click',(e)=>{
+cartshow.addEventListener('click',(e)=>{
 
-// if (e.target.classList.contains("closingTheCart")) {
-//   cartshow.style.display = "none";
-//   let clo = new Audio("cartclosed.mp3");
+if (e.target.classList.contains("closingTheCart")) {
+  cartshow.style.display = "none";
+  let clo = new Audio("cartclosed.mp3");
 
-//   clo.play();
-// }
+  clo.play();
+}
 
-// if(e.target.classList.contains('purchaseItem')){
-//     let pur=new Audio('purchasesuc.mp3');
-//     pur.play();
-//     alert("purchase is successful ! thank you")
-// }
-// })
+if(e.target.classList.contains('purchaseItem')){
+    let pur=new Audio('purchasesuc.mp3');
+    pur.play();
+    alert("purchase is successful ! thank you")
+}
+})
 
 
-// fashoppingcart.addEventListener('click',()=>{
-//     cartshow.style.display='block';
-//     let dbs=new Audio('cartopened.mp3');
-//     dbs.play();
-// })
+fashoppingcart.addEventListener('click',()=>{
+    cartshow.style.display='block';
+    let dbs=new Audio('cartopened.mp3');
+    dbs.play();
+})
 
-// checkthecart.addEventListener('click',()=>{
+checkthecart.addEventListener('click',()=>{
 
-//         cartshow.style.display = "block";
-//  let dbs = new Audio("cartopened.mp3");
-//  dbs.play();
-// });
+        cartshow.style.display = "block";
+ let dbs = new Audio("cartopened.mp3");
+ dbs.play();
+});
 
 
 // 
