@@ -21,21 +21,40 @@ let fashoppingcart = document.querySelector(".fa-shopping-cart");
 
 let addToCart=document.querySelector('.addtocart');
 
-function getAllProducts() {
+let btn1=document.getElementById('?page=0');
+
+let paginations=document.querySelector('.paginations');
+let choosebtn=document.querySelector('.sbtn');
 
 
-  axios
-    .get("http://localhost:1111/allproducts")
-    .then((result) => {
+let bala=false;
+paginations.addEventListener('click',getAllProducts);
 
-      console.log(result);
 
-          let res=''
-          for (let i = 0; i < result.data.length; i++) {
+bala=true;
 
-              res += `
-<div class="col-4 singleproduct mx-5 mt-5" id=${result.data[i].id}>
-  <h6 class="text-center cartname">${result.data[i].productname}</h6>
+function getAllProducts(e) {
+
+  
+
+
+  if (
+    e.target.id == "?page=0" ||
+    e.target.id == "?page=1" ||
+    e.target.id == "?page=2" ||
+    e.target.id == "?page=3" ||
+    e.target.id == "?page=4" 
+  ) {
+    axios
+      .get(`http://localhost:1111/allproducts${e.target.id}`)
+      .then((result) => {
+        console.log(result);
+
+        let res = "";
+        for (let i = 0; i < result.data.length; i++) {
+          res += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;" class="text-center cartname">${result.data[i].productname}</h6>
 
   <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
   <h4 class="cartprice">${result.data[i].productprice}</h4>
@@ -43,13 +62,17 @@ function getAllProducts() {
   <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
 </div>
       `;
-          }
+        }
 
-          listofproducts.innerHTML=res
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+        listofproducts.innerHTML = res;
+        
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+
   
 };
 
@@ -66,13 +89,13 @@ function getallcartitems(){
 
  <div class="singler mt-2" id=${items.data[i].id}>
 
- <span style="font-size: 15px; width:10vw;  margin-left: 5px; width:10vw; ">${
-        items.data[i].productname
-      }</span>
+ <span style="font-size: 15px; width:10vw;   text-transform: uppercase;  margin-left: 5px; width:10vw; ">${
+   items.data[i].productname
+ }</span>
 
  <span style="font-size: 20px; margin-left: 60px; ">${
-        items.data[i].productprice
-      }</span>
+   items.data[i].productprice
+ }</span>
 
  <input style="width:40px; margin-left:80px;" value=${1} disabled>
 
@@ -91,7 +114,39 @@ function getallcartitems(){
   })
 }
 
-document.addEventListener('DOMContentLoaded',getallcartitems);
+
+document.addEventListener('DOMContentLoaded',(e)=>{
+axios
+  .get(`http://localhost:1111/allproducts${'?page=0'}`)
+  .then((result) => {
+    console.log(result);
+
+    let res = "";
+    for (let i = 0; i < result.data.length; i++) {
+      res += `
+<div class="col-4 singleproduct  mt-4" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;"  class="text-center cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+    }
+
+    listofproducts.innerHTML = res;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+  getallcartitems()
+
+
+})
+
+
 
 
 listofproducts.addEventListener('click',(e)=>{
@@ -123,10 +178,10 @@ if(e.target.classList.contains('addtocart')){
               console.log(err);
             });
 }
-})
+});
 
 
-document.addEventListener('DOMContentLoaded',getAllProducts);
+
 
 // function getAllLocal(){
 //     let totalPrice = 0;
@@ -258,22 +313,25 @@ let name = e.target.parentElement.querySelector(".cartname").innerText;
 
 
 
-// showcartitems.addEventListener('click',(e)=>{
+showcartitems.addEventListener('click',(e)=>{
+  let idf=e.target.parentElement.id;
 
-        // console.log(e.target);
-
-
-//     if (e.target.classList.contains("removeTheItem")) {
-//       let RemId = e.target.parentElement.id;
-
-//       localStorage.removeItem(RemId);
-
-//       getAllLocal();
-//     }
-    
+        if(e.target.classList.contains('removeTheItem')){
 
 
-// })
+          axios.delete(`http://localhost:1111/deletecartitem/${idf}`)
+          .then(result=>{
+            console.log(result);
+            getallcartitems();
+          })
+          .catch(err=>{
+            console.log(err);
+          })
+        }
+
+
+
+})
 
 
 cartshow.addEventListener('click',(e)=>{
@@ -297,18 +355,9 @@ fashoppingcart.addEventListener('click',()=>{
     cartshow.style.display='block';
     let dbs=new Audio('cartopened.mp3');
     dbs.play();
-})
-
-checkthecart.addEventListener('click',()=>{
-
-        cartshow.style.display = "block";
- let dbs = new Audio("cartopened.mp3");
- dbs.play();
 });
 
-
-// 
-
+//  remove cart item
 
 
 
@@ -318,36 +367,181 @@ checkthecart.addEventListener('click',()=>{
 
 
 
+//   choose btn
 
 
 
 
+choosebtn.addEventListener('click',(e)=>{
+
+
+  // phone products
+  
+if (
+  e.target.id == "phoneid"
+) {
+
+  axios
+    .get(`http://localhost:1111/chooseproduct`)
+    .then((result) => {
+      console.log(result);
+
+
+      let ram = "";
+      for (let i = 0; i < result.data.length; i++) {
+
+   if(result.data[i].productcat=='phones'){
+        ram += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;" class="text-center cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+      }
+   }
+
+      listofproducts.innerHTML = ram;
+   
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// gloasry items
+
+if (e.target.id == "glosaryid") {
+  axios
+    .get(`http://localhost:1111/chooseproduct`)
+    .then((result) => {
+      console.log(result);
+
+      let ram = "";
+      for (let i = 0; i < result.data.length; i++) {
+        if (result.data[i].productcat == "glosary") {
+          ram += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;" class="text-center cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+        }
+      }
+
+      listofproducts.innerHTML = ram;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// tvs
+
+
+if (e.target.id == "tvid") {
+  axios
+    .get(`http://localhost:1111/chooseproduct`)
+    .then((result) => {
+      console.log(result);
+
+      let ram = "";
+      for (let i = 0; i < result.data.length; i++) {
+        if (result.data[i].productcat == "tvs") {
+          ram += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style=" text-transform: uppercase;"  class="text-center cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+        }
+      }
+
+      listofproducts.innerHTML = ram;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+//laptops 
+
+
+if (e.target.id == "laptopid") {
+  axios
+    .get(`http://localhost:1111/chooseproduct`)
+    .then((result) => {
+      console.log(result);
+
+      let ram = "";
+      for (let i = 0; i < result.data.length; i++) {
+        if (result.data[i].productcat == "laptops") {
+          ram += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;" class="text-center  cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+        }
+      }
+
+      listofproducts.innerHTML = ram;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+// book id
+
+if (e.target.id == "bookid") {
+  axios
+    .get(`http://localhost:1111/chooseproduct`)
+    .then((result) => {
+      console.log(result);
+
+      let ram = "";
+      for (let i = 0; i < result.data.length; i++) {
+        if (result.data[i].productcat == "books") {
+          ram += `
+<div class="col-4 singleproduct mx-5 mt-3" id=${result.data[i].id}>
+  <h6 style="  text-transform: uppercase;" class="text-center cartname">${result.data[i].productname}</h6>
+
+  <img class="cartimag" src=${result.data[i].productimage} alt="" srcset="" />
+  <h4 class="cartprice">${result.data[i].productprice}</h4>
+
+  <button class="text-white addtocart" id=${result.data[i].id}>ADD TO CART</button>
+</div>
+      `;
+        }
+      }
+
+      listofproducts.innerHTML = ram;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
 
 
+})
 
-
-
-
-
-
-
-
-
-/*
-
-<div class="col-4 singleproduct mx-5 mt-5" id="4">
-  <h6 class="text-center cartname">DELL INSPIRON3525</h6>
-
-  <img class="cartimag" src="./images/dell3525.jpg" alt="" srcset="" />
-  <h4 class="cartprice">73333</h4>
-
-  <button class="text-white addtocart">ADD TO CART</button>
-</div>;
-          
-
-
-*/
 
 
 
