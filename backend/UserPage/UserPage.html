@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>users</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+<style>
+    
+</style>
+
+</head>
+<body>
+<div class="container bg-warning text-center p-3">
+
+    <form id="formdata" action="successmsg" method="post">
+        <h1 class="my-4">USER FORM </h1>
+
+        <input type="text" placeholder="enter product name" class="my-1 form-control productname">
+        <br>
+        <input type="text" placeholder="enter image url " class="my-1 form-control productimg">
+        <br>
+        <input type="number" placeholder="enter price " class="my-1 form-control productprice">
+        <br>
+                <input type="text" placeholder="enter product description" class="my-1 form-control productdes">
+<br>
+        <input type="text" placeholder="enter product cat" class="my-1 form-control productcat">
+<br>
+
+        <button class="btn btn-success btnsub">Submit user data</button>
+    </form>
+
+</div>
+
+<h1 class="text-success text-center my-4">ALL USERS </h1>
+<hr>
+
+    
+
+    <div class=" carts container row">
+
+    
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+    
+    <script>
+
+        let updateUser=document.querySelector('.updateuser');
+
+        let btnsub=document.querySelector('.btnsub');
+
+let productname=document.querySelector('.productname');
+let productimg=document.querySelector('.productimg');
+let productprice=document.querySelector('.productprice');
+let productdes=document.querySelector('.productdes');
+let productcat=document.querySelector('.productcat');
+
+let userscart=document.querySelector('.carts');
+
+
+let formdata=document.querySelector('#formdata');
+
+formdata.addEventListener('submit',(e)=>{
+    e.preventDefault()
+    let obj={
+  
+  productname:productname.value,
+  productimage:productimg.value,
+  productprice:productprice.value, 
+  productdescription:productdes.value, 
+  productcat:productcat.value
+  
+}
+    
+    axios.post('http://localhost:1111/addproducts',obj)
+    .then(result=>{
+        console.log(result);
+
+
+  
+        // location.reload()
+
+        showus()
+
+
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+})
+// let deleteuser=document.querySelector('.deleteuser')
+
+// userscart.addEventListener('click',(e)=>{
+//     let deleteid=e.target.parentElement.id;
+//     let updateid=e.target.id;
+
+
+
+//     if(e.target.classList.contains('deleteuser')){
+//                axios.delete(`http://localhost:1111/deleteusers/${deleteid}`)
+//                .then(result=>{
+//                 console.log(result);
+//                 showus()
+//                })
+//                .catch(err=>{
+//                 console.log(err);
+//                })
+//     }
+//     if(e.target.classList.contains('updateuser')){
+
+// let sel=e.target.parentElement;
+
+// let updatename=sel.querySelector('.nameid').innerText;
+// let updateage=sel.querySelector('.ageid').innerText;
+// let updatemailid=sel.querySelector('.mailidid').innerText;
+
+
+// UserName.value=updatename;
+// UserAge.value=updateage;
+// UserMail.value=updatemailid;
+
+
+// btnsub.addEventListener('click',(e)=>{
+
+// console.log(updateid);
+
+// e.preventDefault()
+// let obj1={
+// name:UserName.value,
+//     age:UserAge.value,
+//     mailid:UserMail.value
+
+// }
+// axios.put(`http://localhost:1111/updateuser/${updateid}`,obj1)
+// .then(result=>{
+//     console.log(result);
+//     alert(' user updated ')
+//     UserName.value=''
+//     UserAge.value=''
+//     UserMail.value=''
+
+//     location.reload()
+
+//     showus()
+// })
+// .catch(err=>{
+//     console.log(err);
+// })
+// })
+
+
+
+
+//     }
+
+
+
+// })
+
+function showus(){
+    axios.get('http://localhost:1111/allproducts')
+.then(result=>{
+
+    // localStorage.setItem('userdata',JSON.stringify(result.data))
+
+    // console.log(result);
+
+//     let res=''
+//     for (let i = 0; i < result.data.length; i++) {
+
+
+//         res+=`        <div class="col-md-4 mt-3">
+//             <div class="card bg-dark"> 
+            
+//                 <div class="card-body p-2" id=${result.data[i].id}>
+
+//                     <h4 class='text-white'>USER NAME : </h4>
+
+//                     <h5 class="text-success p-2  nameid"> ${result.data[i].name}</h5>
+//                     <h4  class='text-white'>USER AGE : </h4>
+
+//                     <h5 class="text-primary p-2  ageid"> ${result.data[i].age}</h5>
+//                     <h4 class='text-white'>USER mailid : </h4>
+
+//                     <h6 class="text-danger  p-2 mailidid"> ${result.data[i].mailid}</h6>
+//                     <button id=${result.data[i].id} class="deleteuser btn btn-danger my-4">Delete User </button>
+//                     <button id=${result.data[i].id} class="updateuser btn btn-warning my-4">Update User </button>
+
+                 
+//                 </div>
+
+
+//             </div>
+//         </div>
+// `     
+//     }
+
+
+
+//     userscart.innerHTML=res
+    
+    
+
+    
+})
+.catch(err=>{
+    console.log(err);
+})
+
+}
+
+
+window.addEventListener('DOMContentLoaded',showus)
+
+    </script>
+</body>
+</html>
