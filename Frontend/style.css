@@ -1,0 +1,486 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:wght@450&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Foundation&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap');
+
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+
+.barclass{
+
+    top: 0;
+
+    background-color:rgb(36, 36, 41);
+
+    width: 100%;
+    position: fixed;
+    height: 10vh;
+
+}
+#navbrand {
+
+    color:white;
+    letter-spacing: 1px;
+
+  font-size: 27px;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#navlink1,#navlink2,#navlink3{
+font-size: 20px;
+    color: rgb(239, 207, 207);
+    font-weight: 520;
+    
+}
+#navlink4{
+    font-size: 20px;
+    color: white;
+}
+#navlink1:hover,#navlink2:hover,#navlink3:hover{
+    border: 1px solid white;
+}
+
+#navi{
+    margin-left: 300px;
+}
+#cartcount{
+
+    margin-top: -36px;
+    margin-left: -24px;
+    font-size: 15px;
+
+    color: rgb(251, 167, 11);
+
+
+}
+.fas{
+    color: whitesmoke;
+
+}
+
+
+
+.welcomemsg{
+
+    width: 100%;
+    }
+.welcome{
+    height: 25vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+}
+.welcometxt{
+    font-weight: 500;
+    color: orange;
+    
+}
+.managenav{
+    height: 11vh;
+    background-color: black;
+    width: 100%;
+    
+}
+.card-title{
+    font-weight: 530;
+    font-size: 40px;
+}
+.cartimage{
+    
+}
+
+
+#rowsdata{
+margin-top: 10vh;
+}
+.cartlists{
+padding-right: 15%;
+padding-left: 13%;
+position: absolute;
+}
+
+.cardcart{
+}
+.cartimage{
+    height: 55vh;
+}
+
+@media  screen and (max-width: 600px) {
+
+
+    .cartlists{
+        padding-right: 3%;
+padding-left: 3%;
+
+    }
+
+    .productscontainer{
+
+        width: 100vw;
+        margin: 0%;
+        padding: 0px;
+    }
+    
+    .cartimag{
+
+    }
+    .singleproduct{
+        margin-right: 0px;
+        margin-left: 0px;
+        width: 100%;
+        
+    }
+    #navbarshort{
+        background-color: crimson;
+        width: 100%;
+
+    }
+    #navi{
+        background-color: crimson;
+        float: left;
+        margin-left: 0px;
+    }
+    
+
+    #navlink4{
+    font-size: 30px;
+    color: white;
+}
+
+    .fa-shopping-cart{
+    padding: 50px;
+    font-size: 70px;
+    margin-top: 50px;
+    }
+    #cartcount{
+        margin-left: 70px;
+       margin-top: -171px;
+    
+       color: #fff;
+        font-size: 30px;
+        margin-bottom: 100px;
+    }
+    
+
+#navlink1,#navlink2,#navlink3{
+font-size: 30px;
+    color: rgb(228, 218, 218);
+    font-weight: 520;
+    margin-top: 20px;
+    
+}
+
+.listofproducts{
+    width: 100%;
+    margin: 0px;
+}
+
+
+.cartshow{
+
+font-size: 18px;
+   width: 100%;
+}
+}
+
+
+/* home page styling */
+
+ 
+
+
+.singleproduct{
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+
+
+
+.homewelcomemsg{
+
+
+    
+
+}
+
+
+
+.homewelcomemsg{
+
+    width: 100%;
+    background-color: black;
+    height: 53vh;
+    }
+.homewelcome{
+    height: 25vh;
+    padding: 20px;
+
+}
+.homewelcometxt{
+    font-weight: 500;
+    font-size: 50px;
+    
+}
+.latestproducts{
+    padding: 10px;
+    margin-left: 40%;
+        font-weight: 900;
+
+}
+
+.playbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ width: 80px;
+ height: 80px;
+ border: 2px solid white;
+ border-radius: 50%;
+    padding: 1rem;
+    margin-left: 47%;
+}
+
+.homeproducttitle{
+    font-weight: 600;
+font-family: 'Lobster', cursive;
+letter-spacing: 4px;
+}
+
+
+.btn-outline-dark{
+    width: 10vw;
+    padding: 5px;
+}
+.fot{
+    width: 100%;
+    background-color: black;
+    display: grid;
+    place-items: center;
+    
+}
+.topfot{
+    
+}
+
+/* end of home page styling */
+
+
+/*  about page styling */
+
+.aboutwelcomemsg{
+        width: 100%;
+    background-color: black;
+    height: 25vh;
+    
+    display: grid;
+
+    place-items: center;
+}
+
+
+.ima{
+}
+.aboutdiscription{
+    margin-top: 5%;
+}
+/* alert when product added to cart   */
+
+.parentalert{
+    padding: 10px;
+        position: fixed;
+    bottom: 0px;
+    right: 0px;
+
+    
+  
+}
+.productalert{
+        background-color: rgb(6, 6, 203);
+    border-radius: 5px;
+    color: #fff;
+    padding: 1rem;
+    margin: 0rem;
+    font-size: 10px;
+
+}
+
+/*  */
+
+
+/* 
+manage the show cart
+*/
+
+.cartshow{
+    right: 0%;
+    top: 0%;
+
+    width: 90%;
+margin-top: 8vh;
+    height: 100vh;
+    background-color: whitesmoke;
+        position: fixed;
+        font-family: 'Lobster', cursive;
+        font-family: 'Poppins', sans-serif;
+
+
+
+}
+
+#alertpopup{
+    position:fixed;
+    bottom:20px;
+    right:2px;
+}
+.notification {
+    background-color: rgb(116, 139, 161);
+    border-radius: 5px;
+    color: whitesmoke;
+    padding: 0.7rem;
+    margin: 1rem;
+}
+
+
+/* cart design */
+
+
+
+.productscontainer{
+    width: 70%;
+    margin: auto;
+    padding: 20px;
+}
+
+.cartimag{
+    width: 18vw;
+    height: 30vh;
+}
+
+
+.cartprice{
+    margin-top: 27px;
+    width: 55%;
+}
+.addtocart{
+    float: right;
+    margin-top: -37px;
+    background-color: rgb(21, 9, 9);
+    padding: 4px;
+    border-radius: 10px;
+}
+.singleproduct{
+
+background-color: white;
+padding: 13px;
+border: 5px solid black;
+    
+}
+
+.removeitem{
+    padding: 5px;
+    background-color: red;
+    color: white;
+    font-weight: 600;
+    border-radius: 10px;
+}
+.cartshow{
+    display: none;
+}
+
+.fa-shopping-cart:hover{
+    cursor: pointer;
+}
+
+.checkthecart{
+    border: none;
+    background-color: lightslategrey;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    
+}
+
+.checkthecart:hover{
+    background-color: rgb(63, 71, 81);
+}
+
+.pag{
+    border: none;
+    padding: 8px;
+    background-color: rgb(71, 71, 78);
+    color: white;
+    width: 2rem;
+}
+
+.fa-angle-left , .fa-chevron-right{
+
+        border: none;
+    padding: 8px;
+    background-color: rgb(71, 71, 78);
+    color: white;
+    width: 2rem;
+
+}
+
+
+#phoneid{
+
+    border: none;
+    padding: 7px;
+    background-color: red;
+    color: white;
+    border-radius: 8px;
+
+
+}
+#glosaryid{
+
+        border: none;
+    padding: 7px;
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+
+}
+
+#tvid{
+        border: none;
+    padding: 7px;
+    background-color: rgb(20, 138, 212);
+    color: white;
+    border-radius: 8px;
+
+
+}
+#laptopid{
+
+        border: none;
+    padding: 7px;
+    background-color: rgb(22, 7, 7);
+    color: white;
+    border-radius: 8px;
+
+
+}
+#bookid{
+
+        border: none;
+    padding: 7px;
+    background-color:rgb(222, 146, 4);
+    color: white;
+    border-radius: 8px;
+
+}
+
+
